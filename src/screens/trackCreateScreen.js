@@ -1,23 +1,15 @@
-import React, { useState, useEffect } from "react";
+import '../_mockLocation'
+import React, {useContext ,useState} from "react";
+import useLocation from '../hooks/useLocation'
 import { Text, Button, Input } from "react-native-elements";
 import { StyleSheet } from "react-native";
 import Spacer from "../components/Spacer";
 import Map from "../components/Map";
-import { requestPermissionsAsync } from "expo-location";
+import {Context as LocationContext}from '../context/LocationContext'
 const TrackCreateScreen = () => {
+  const  {addLocation} = useContext(LocationContext);
   const [trackName, setTrackName] = useState("");
-  const [err, setErr] = useState(null);
-
-  const startWatching = async () => {
-    try {
-      await requestPermissionsAsync();
-    } catch (err) {
-      setErr(err);
-    }
-  };
-  useEffect(() => {
-    startWatching();
-  }, []);
+  const [err] = useLocation(addLocation)
   return (
     <>
       <Text style={styles.text}>Create your Track</Text>
