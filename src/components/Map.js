@@ -1,14 +1,11 @@
-import * as Location from 'expo-location'
-import React,{useContext} from "react";
-import { StyleSheet,ActivityIndicator } from "react-native";
-import MapView, { Polyline ,Circle} from "react-native-maps";
-import {Context as LocationContext} from '../context/LocationContext'
+import React, { useContext } from "react";
+import { StyleSheet, ActivityIndicator } from "react-native";
+import MapView, { Polyline, Circle } from "react-native-maps";
+import { Context as LocationContext } from '../context/LocationContext'
 const Map = () => {
-  const {state:{currentLocation}} = useContext(LocationContext);
-  // console.log(currentLocation);
-  
-  if(!currentLocation){
-    return <ActivityIndicator size='large' style={{marginTop:200}}/>
+  const { state: { currentLocation, locations } } = useContext(LocationContext);
+  if (!currentLocation) {
+    return <ActivityIndicator size='large' style={{ marginTop: 200 }} />
   }
   return (
     <MapView
@@ -24,12 +21,13 @@ const Map = () => {
         longitudeDelta: 0.007
       }}
     >
-      <Circle 
+      <Circle
         center={currentLocation.coords}
         radius={15}
         strokeColor="blue"
         fillColor="rgba(158,158,255,0.3)"
       />
+      <Polyline coordinates={locations.map(loc => loc.coords)} />
     </MapView>
   );
 

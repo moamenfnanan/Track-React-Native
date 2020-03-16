@@ -1,5 +1,5 @@
 import '../_mockLocation'
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useCallback } from "react";
 import { withNavigationFocus } from 'react-navigation'
 import useLocation from '../hooks/useLocation'
 import { Text, Button, Input } from "react-native-elements";
@@ -9,13 +9,12 @@ import Map from "../components/Map";
 import { Context as LocationContext } from '../context/LocationContext'
 import TrackForm from '../components/trackForm';
 const TrackCreateScreen = ({ isFocused }) => {
-  const {state, addLocation } = useContext(LocationContext);
+  const { state, addLocation } = useContext(LocationContext);
   const [trackName, setTrackName] = useState("");
-  const [err] = useLocation(isFocused,(location)=>{
-    addLocation(location,state.recording)
-  })
-  // console.log(isFocused);
-
+  const callback = useCallback((location) => {
+    addLocation(location, state.recording)
+  }, [state.recording])
+  const [err] = useLocation(isFocused || state.recording, callback)
   return (
     <>
       <Text style={styles.text}>Create your Track</Text>
