@@ -1,4 +1,18 @@
 import axios from 'axios'
-export default axios.create({
-    baseURL:'https://newtrackapi.herokuapp.com/'
+import { AsyncStorage } from 'react-native';
+const instance = axios.create({
+    baseURL: 'https://newtrackapi.herokuapp.com/'
 })
+instance.interceptors.request.use(
+    async (config) => {
+        const token = await AsyncStorage.getItem('token')
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config
+    },
+    (err) => {
+        return Promise.reject(err);
+    }
+)
+export default instance;
