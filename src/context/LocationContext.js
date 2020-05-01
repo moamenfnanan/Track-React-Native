@@ -43,5 +43,9 @@ const reset = dispatch => () => {
 export const { Context, Provider } = createDataContext(
     locationReducer,
     { startRecording, stopRecording, addLocation, changeName, reset },
+    // The Observer Pattren
+    // the data represent depending on thos state if any thing was changed the data that will represnt will change
+    // the main idea make changes in multiple places(screens) depneding on some state
+    // مش شرط تبعت notify بالمعنى تاع notify بس هيا رح تتغير اعتمادا عليها
     { name: '', recording: false, locations: [], currentLocation: null }
 )

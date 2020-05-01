@@ -16,27 +16,34 @@ import { Provider as LocationProvider } from './src/context/LocationContext'
 import { Provider as TrackProvider } from './src/context/TrackContext'
 import { setNavigate } from './src/navigationRef';
 import ResolveScreen from './src/screens/resolveScreen'
-import {FontAwesome} from '@expo/vector-icons'
+import { FontAwesome } from '@expo/vector-icons'
 const trackListFlow = createStackNavigator({
-    TrackList: TrackListScreen,
-    TrackDetial: TrackDetailScreen
+  TrackList: TrackListScreen,
+  TrackDetial: TrackDetailScreen
 })
-  trackListFlow.navigationOptions={
-    title:'tracks',
-    tabBarIcon:<FontAwesome name='th-list' size={20}/>
-  }
+trackListFlow.navigationOptions = {
+  title: 'tracks',
+  tabBarIcon: <FontAwesome name='th-list' size={20} />
+}
+// Singleton or facade pattren
+// MainNav is instance stores a reference to the Singleton
 const MainNav = createSwitchNavigator({
+  // getting all screens inside one instance called MainNav (all component inside one instance)
+  // this pattren make it easy to connect all screens togother
+  // the modification is instead of using Modal(and it take more time to write code) to connect one screen to anther one we get every thing inside just one instance like this.
   ResolveScreen: ResolveScreen,
   AuthFlow: createStackNavigator({
     login: LoginScreen,
     signup: SignupScreen
   }),
   MainFlow: createBottomTabNavigator({
-    trackListFlow,    
+    trackListFlow,
     CreateTrack: TrackCreateScreen,
     Account: AccountScreen
   })
 });
+// Decorator Pattren
+// getting function inside another function 
 const App = createAppContainer(MainNav)
 export default () => {
   return (

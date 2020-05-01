@@ -12,6 +12,11 @@ const TrackForm = () => {
         <Spacer />
         {recording ? <Button title="stop" onPress={stopRecording} /> : <Button title="Start Recording" onPress={startRecording} />}
         <Spacer />
+        {/* 
+            The Prototype Pattern
+            Create an Object and can get access for his property
+            very usefull in memory efficiently (no duplicate with code didn't  write the property multiple time for every component)
+        */}
         {!recording && locations.length ? (<Button title='save' onPress={saveTrack} />) : null}
     </>
 }

@@ -41,6 +41,8 @@ const signup = dispatch => async ({ email, password }) => {
     });
   }
 };
+// facade pattren
+// the face is nice to use and to look but the code is complix here
 const signin = dispatch => async ({ email, password }) => {
   try {
     const response = await trackerApi.post("/signIn", { email, password });
