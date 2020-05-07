@@ -1,5 +1,5 @@
 # Track-React-Native
-this project bulit on React Native framework so that can you try on your phone(both android or ios).
+this project bulit on React Native framework so that you can try on your phone(both android or ios).
 you can record your track using this app by starting record and moving arround then stop and save record (this record will save on database on(Node JS framwork backend),then your track will appear in another screen to see later
 This Project containt those approach:
 Login & Signin Flow (two screens),
