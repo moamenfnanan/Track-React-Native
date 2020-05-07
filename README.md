@@ -9,14 +9,14 @@ Track Record(Record Screen),
 Profile(Profile Screen for signout)"
 we added some design pattrens on this project you can see them inside code we added comments(description about those pattrens)
 
-Getting Started:
+Getting Started:  
 
 *Clone this project
 
-*To install all dependencies:
+*To install all dependencies:  
 npm install
 
-*To run Project:
+*To run Project:  
 npm start or expo start
 
 
