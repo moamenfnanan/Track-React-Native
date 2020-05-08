@@ -2,6 +2,8 @@ import createDataContext from './createDataContext'
 const locationReducer = (state, action) => {
     switch (action.type) {
         case 'add_current_Location':
+            // Prototype pattern
+            // getting all property from state object inside another object and make changes to it
             return { ...state, currentLocation: action.payload }
         case 'start_recodrding':
             return { ...state, recording: true }
@@ -44,8 +46,7 @@ export const { Context, Provider } = createDataContext(
     locationReducer,
     { startRecording, stopRecording, addLocation, changeName, reset },
     // The Observer Pattren
-    // the data represent depending on thos state if any thing was changed the data that will represnt will change
     // the main idea make changes in multiple places(screens) depneding on some state
-    // مش شرط تبعت notify بالمعنى تاع notify بس هيا رح تتغير اعتمادا عليها
+    // if any changes happen inside this object will make changes in multiple other screens
     { name: '', recording: false, locations: [], currentLocation: null }
 )

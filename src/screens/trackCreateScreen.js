@@ -17,6 +17,8 @@ const TrackCreateScreen = ({ isFocused }) => {
   }, [state.recording])
   const [err] = useLocation(isFocused || state.recording, callback)
   return (
+    // Decorator pattern
+    // wrap multiple component inside another component(Parent and child components)
     <>
       <Text style={styles.text}>Create your Track</Text>
       <Spacer />

@@ -14,6 +14,7 @@ const authReducer = (state, action) => {
       return state;
   }
 };
+// facade pattern
 const tryLocalSignin = dispatch =>async()=>{
 const token = await AsyncStorage.getItem('token');
 if(token){
@@ -23,11 +24,13 @@ if(token){
   navigate('AuthFlow')
 }
 }
+// facade pattern
 const clearErrorMessage = dispatch => () => {
   dispatch({
     type: "clear_Error_Message"
   });
 };
+// facade pattern
 const signup = dispatch => async ({ email, password }) => {
   try {
     const response = await trackerApi.post("/signUp", { email, password });
@@ -42,7 +45,7 @@ const signup = dispatch => async ({ email, password }) => {
   }
 };
 // facade pattren
-// the face is nice to use and to look but the code is complix here
+// There is a complex code to connect user with application after athuntication we write this just one place and reuse it in another places(loginScreen.js)
 const signin = dispatch => async ({ email, password }) => {
   try {
     const response = await trackerApi.post("/signIn", { email, password });
@@ -57,7 +60,7 @@ const signin = dispatch => async ({ email, password }) => {
     });
   }
 };
-
+// facade pattern
 const signout = dispatch =>{
   return async()=>{
     await AsyncStorage.removeItem('token','');

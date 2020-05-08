@@ -15,6 +15,8 @@ dispatch({
     type:'fetch_tracks',payload:response.data
 })
 }
+// Observer Pattern
+// This will make changes in multiple other places(Screens)
 const createTrack = dispatch => async (name, locations) => {
     await trackerApi.post('/tracks', { name, locations });
 }
