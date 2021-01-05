@@ -9,7 +9,7 @@
     "ngrok": "expo start ngrok http 3000"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "expo": "~36.0.0",
     "ngrok": "^3.2.7",
     "react": "~16.9.0",
